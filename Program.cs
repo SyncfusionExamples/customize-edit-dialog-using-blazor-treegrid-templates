@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Syncfusion.Blazor;
 
 var builder = WebApplication.CreateBuilder(args);
-Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjY4NTM0M0AzMjMyMmUzMDJlMzBaRk9XNGpPd2VxRVpPRElmcW1FNE15YTBlT3JvcWxvSnA4alRPWG1PazRnPQ==");
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("");
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
