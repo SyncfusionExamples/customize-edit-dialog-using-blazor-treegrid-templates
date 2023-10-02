@@ -1,28 +1,30 @@
 ﻿@page "/"
+@using Syncfusion.Blazor.Grids;
 @using Syncfusion.Blazor.Inputs
 @using Syncfusion.Blazor.DropDowns
 @using Syncfusion.Blazor.Calendars
 @using Syncfusion.Blazor.Buttons
 <style>
-    .form-group.col-md-6{
-        width:200px;
+    .form-group.col-md-6 {
+        width: 200px;
     }
-    .form-group.col-md-6.e-chk{
-        padding: 7%;
-    }
+
+        .form-group.col-md-6.e-chk {
+            padding: 7%;
+        }
 </style>
 <SfTreeGrid DataSource="@TreeData" IdMapping="TaskId" ParentIdMapping="ParentId" TreeColumnIndex="1"
             Toolbar="@(new List<string>() {"Add", "Edit", "Delete", "Update", "Cancel"})">
     <TreeGridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true"
                           Mode="Syncfusion.Blazor.TreeGrid.EditMode.Dialog">
         <Template>
-            @{ 
+            @{
                 var Task = (context as BusinessObject);
                 <div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <SfNumericTextBox @bind-Value="@(Task.TaskId)" Enabled="@(Task.TaskId == 0 ? true : false)"
-                                              Placeholder="Task ID" FloatLabelType="FloatLabelType.Always" TValue="int"></SfNumericTextBox>
+                                          Placeholder="Task ID" FloatLabelType="FloatLabelType.Always" TValue="int"></SfNumericTextBox>
                         </div>
                         <div class="form-group col-md-6">
                             <SfAutoComplete DataSource="@TreeData" TItem="BusinessObject" TValue="string"
@@ -34,11 +36,11 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <SfDatePicker TValue="DateTime?" @bind-Value="@(Task.StartDate)"
-                                          Placeholder="Start date" FloatLabelType="FloatLabelType.Always"></SfDatePicker>
+                                      Placeholder="Start date" FloatLabelType="FloatLabelType.Always"></SfDatePicker>
                         </div>
                         <div class="form-group col-md-6">
                             <SfNumericTextBox @bind-Value="@(Task.Progress)" TValue="int"
-                                              Placeholder="Progress" FloatLabelType="FloatLabelType.Always"></SfNumericTextBox>
+                                          Placeholder="Progress" FloatLabelType="FloatLabelType.Always"></SfNumericTextBox>
                         </div>
                     </div>
                     <div class="form-row">
@@ -49,12 +51,12 @@
                             </SfDropDownList>
                         </div>
                         <div class="form-group col-md-6 e-chk">
-                            <SfCheckBox @bind-Checked="@(Task.Approved)" Label="Approved" LabelPosition="LabelPosition.After"></SfCheckBox>
+                            <SfCheckBox @bind-Checked="@(Task.Approved)" Label="Approved" LabelPosition="Syncfusion.Blazor.Buttons.LabelPosition.After"></SfCheckBox>
                         </div>
                     </div>
                 </div>
-                }
-</Template>
+            }
+        </Template>
     </TreeGridEditSettings>
     <TreeGridColumns>
         <TreeGridColumn Field="TaskId" HeaderText="Task ID" TextAlign="TextAlign.Right" IsPrimaryKey="true"></TreeGridColumn>
@@ -66,7 +68,7 @@
     </TreeGridColumns>
 </SfTreeGrid>
 
-@code{
+@code {
 
     public class BusinessObject
     {
@@ -102,7 +104,10 @@
         TreeData.Add(new BusinessObject() { TaskId = 8, TaskName = "Child Task 7", Duration = 3, Progress = 38, ParentId = 7, Priority = "Critical", StartDate = DateTime.Now.AddDays(-1), Approved = true, });
         TreeData.Add(new BusinessObject() { TaskId = 9, TaskName = "Child Task 8", Duration = 7, Progress = 70, ParentId = 7, Priority = "Low", StartDate = DateTime.Now.AddDays(-5), Approved = true, });
 
-        priorityData = TreeData.Select(rec => rec.Priority).Distinct().Select((priority, index) => new DropDownData() { TaskId = index, 
-            Priority = priority }).ToList();
+        priorityData = TreeData.Select(rec => rec.Priority).Distinct().Select((priority, index) => new DropDownData()
+            {
+                TaskId = index,
+                Priority = priority
+            }).ToList();
     }
 }
