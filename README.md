@@ -52,11 +52,6 @@ This sample demonstrates how to customize dialog editing in the Syncfusion [Blaz
 dotnet restore
 dotnet run
 ```
-
-## Project Structure
-
-`Pages/Index.razor` — Contains the Syncfusion TreeGrid implementation, dialog editing configuration, custom edit-dialog template, column definitions, and sample editing workflow.
-
 ## Support and Feedback
 
 - For general product questions, visit the [Syncfusion Community Forum](https://www.syncfusion.com/forums) or [Syncfusion Support](https://www.syncfusion.com/support).
